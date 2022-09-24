@@ -1,0 +1,15 @@
+import random
+import time
+
+def getTemperature():
+  return random.randint(-20,58)
+def getHumidity():
+  return random.randint(0,99)
+
+while True:
+  temperature=getTemperature()
+  humidity=getHumidity()
+  print("Temperature: ",temperature,"°C","\tHumidity: ",humidity,"%",sep="")
+  if temperature>40:
+    print('-'*5,"Alarm!!!-High Temperature",'-'*5,"\n\n")
+  time.sleep(1)

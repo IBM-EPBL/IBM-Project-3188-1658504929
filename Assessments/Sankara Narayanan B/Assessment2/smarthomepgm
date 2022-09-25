@@ -1,0 +1,14 @@
+import time
+import random
+
+class RandomGenerator:
+  def __init__(self):
+    self.temperature=random.randint(-50,138)
+    self.humidity=random.randint(0,99)
+    
+while True:
+  rand=RandomGenerator()
+  print("Temperature: "+str(rand.temperature)+"°F"+"\tHumidity: "+str(rand.humidity)+"%",sep="")
+  if rand.temperature>104:
+    print('-'*4,"Temperature is Too hot",'-'*4,"\n\n")
+  time.sleep(1)

@@ -1,0 +1,80 @@
+// Final Code for all functionality is given below
+
+
+Creating global variables:
+
+  var json=global.get("json")
+  json["boarding"]=global.get("board")
+  json["destination"]=global.get("dest")
+  json["card_details"]=msg.payload.card_details
+  json["upi_id"]=msg.payload.name
+  var string=JSON.stringify(json);
+  msg.payload=json
+  msg.qrcodeinput=string;
+  return msg;
+  
+ 
+Boarding:
+
+  global.set("board",msg.payload );
+  return msg;
+  
+  
+Destination:
+
+  global.set("dest",msg.payload )
+  return msg;
+
+Globally adding JSON File:
+
+  global.set("json",msg.payload)
+  return msg;
+  
+  
+Adding QR code image to payload:
+
+  msg.payload=msg.payload;
+  return msg;
+  
+  
+QR Template:
+
+  <img src={{msg.payload}}
+  style="border:0px;height:300px; width:300px">
+  
+  
+Success notification payload:
+
+  msg.payload="Ticket is genetrated/Reserved";
+  return msg;
+
+
+Seat Selection:
+
+  global.set('s1',0)
+  global.set('s2',0)
+  global.set('s3',0)
+  global.set('s4',0)
+  global.set('s5',0)
+  var a2 = [1,2,3,4,5]
+  global.set('a',a2)
+  msg.payload = global.get('a')
+  return msg;
+
+
+Clear functionality in Seat Selection:
+
+  var a = global.get('a')
+  var s = []
+  for(let i=0; i<a.length; i++){
+   s.push(a[i])
+
+  }
+  if(s.length==0){
+   msg.options = [{"No seats avaliable":0}]
+  }
+  else{
+   msg.options = s
+  }
+  msg.payload = s
+  return msg;
